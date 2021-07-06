@@ -4,7 +4,7 @@ Created on Sun Jul  4 19:21:17 2021
 
 @author: Administrator
 """
-
+from numpy import array
 import pandas as pd
 from pandas import Series
 from sklearn.preprocessing import MinMaxScaler
@@ -14,7 +14,7 @@ from keras.layers import LSTM
 from keras.layers import Dropout
 
 def lstm():
-    df = pd.read_csv('./data/daily_intrates.csv')
+    df = pd.read_csv('./data/daily_treasury_yield_curve_rates.csv')
     df = df[['Date','10 yr']]
     df.rename(columns={'10 yr':'Tenyr'},inplace=True)
     
@@ -37,12 +37,7 @@ def lstm():
     inverted_series = Series(inverted_X[:, 0])
     print(inverted_series.head())
     
-    
-    layer = LSTM(neurons, batch_input_shape=(batch_size, X.shape[1], X.shape[2]), stateful=True)
-    model = Sequential()
-    model.add(LSTM(neurons, batch_input_shape=(batch_size, X.shape[1], X.shape[2]), stateful=True))
-    model.add(Dense(1))
-    model.compile(loss='mean_squared_error', optimizer='adam')
-    
-    
+
+
+
 lstm()
