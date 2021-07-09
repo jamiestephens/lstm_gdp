@@ -28,7 +28,7 @@ Sklearn: for mean squared error calculation and MinMaxScaler
 
 
 ### Communication
-I developed a PowerPoint to share my findings with several visuals of the data, shown below. 
+I developed a PowerPoint to share my findings with several visuals of the data, shown below. The below illustrates the output I received from the vast majority of times the network was run; short term models were difficult to predict accurately while overall, the longer the time horizon for the bill the more likely that a neural network could forecast it.
 
 ![image](https://user-images.githubusercontent.com/71529189/125053079-a986a800-e072-11eb-876e-a7893e8727c7.png)
 
