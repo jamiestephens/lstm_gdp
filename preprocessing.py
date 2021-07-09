@@ -13,13 +13,18 @@ from sklearn.preprocessing import MinMaxScaler
 
 
 
-df = pd.read_csv('./data/daily_treasury_yield_curve_rates.csv', na_values= ['N/A '],skiprows=1, names=['Date','Onemo','Twomo','Threemo','Sixmo',
-                                    'Oneyr','Twoyr','Threeyr','Fiveyr','Sevenyr',
-                                    'Tenyr','Twentyyr','Thirtyyr'])
+df = pd.read_csv('./data/daily_treasury_yield_curve_rates.csv', na_values= ['N/A '],skiprows=1, names=['Date','Onemo','Twomo','Threemo','Sixmo','Oneyr','Twoyr','Threeyr','Fiveyr','Sevenyr','Tenyr','Twentyyr','Thirtyyr'])
 
-del df['Twomo']
+#df = pd.read_csv('./data/daily_treasury_real_yield_curve_rates.csv', na_values= ['N/A '],skiprows=1, names=['Date','Fiveyr','Sevenyr','Tenyr','Twentyyr','Thirtyyr'])
+
+try:
+    col_twomo = df.columns.get_loc("Twomo")
+    df.drop(df.columns[col_twomo], axis=1, inplace=True)
+except:
+    pass
 
 df['Date'] = df['Date'].astype('datetime64[ns]')
+
 
 r = pd.date_range(start=df.Date.min(), end=df.Date.max())
 
@@ -35,8 +40,7 @@ df_2 = df_2.ffill(axis = 0)
 
 df_2['DayWeek'] = df_2['Date'].dt.day_name()
 
-df_2 = df_2.loc[(df_2['Date'] >= '2010-01-01')]
-
+df_2 = df_2.loc[(df_2['Date'] >= '2018-01-02')]
 del df_2['DayWeek']
 
 del df_2['Date']
