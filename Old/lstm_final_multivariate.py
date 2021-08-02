@@ -118,11 +118,11 @@ for bondchoice in bondchoices:
     inv_y = concatenate((test_y, test_X[:, -a:]), axis=1)
     inv_y = scaler.inverse_transform(inv_y)
     inv_y = inv_y[:,0]
-    # calculate RMSE
     rmse = sqrt(mean_squared_error(inv_y, inv_yhat))
     percentwrong = rmse/lastvalue
     print(bondchoice)
     print('Test RMSE: %.3f' % rmse)
     print("Proportion from most recent data point: ",percentwrong)
-        
-
+    
+    yhat = model.predict(1)
+    print(yhat)

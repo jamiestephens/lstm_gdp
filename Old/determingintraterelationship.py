@@ -10,7 +10,7 @@ from statsmodels.stats.outliers_influence import variance_inflation_factor
 
 
 def howareintratesconnected():
-    df = pd.read_csv('./data/daily_intrates.csv', skiprows=1, names=['Date','Onemo','Twomo','Threemo','Sixmo',
+    df = pd.read_csv('./data/daily_treasury_yield_curve_rates.csv', skiprows=1, names=['Date','Onemo','Twomo','Threemo','Sixmo',
                                                         'Oneyr','Twoyr','Threeyr','Fiveyr','Sevenyr',
                                                         'Tenyr','Twentyyr','Thirtyyr'])
     
